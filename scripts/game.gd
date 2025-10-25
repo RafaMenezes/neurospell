@@ -29,3 +29,4 @@ func _ready() -> void:
 	customer = Customer.new("Cheesecake", "Jun")
 	var prompt = prompt_template.format({"recipe": customer.recipe})
 	llm.run_generate_text(prompt)
+	print("generating text...")
