@@ -25,7 +25,6 @@ func _ready() -> void:
 	if not target:
 		push_warning("TypableText: No attached Label found. This script must be a sibling or child of a Label node.")
 		return
-	#target.text = "Heat the oil in a pan.\nAdd garlic and onions.\nCook until soft."
 
 	_setup_input()
 	_reset_state()
@@ -34,7 +33,8 @@ func _ready() -> void:
 func _setup_input() -> void:
 	_input.max_length = 1
 	_input.text = ""
-	_input.position.x = -99999
+	# making it invisible makes input handling stop working, so push it to some place out of sight
+	_input.position.x = -99999 
 	add_child(_input)
 	_input.text_changed.connect(_on_input_changed)
 
@@ -110,7 +110,7 @@ func _process_char(ch: String) -> void:
 		
 	var correct := ch == expected
 
-	emit_signal("char_typed", correct, expected, ch)
+	char_typed.emit(correct, expected, ch)
 	if correct:
 		_char_labels[_index].modulate = Color(0.0, 0.7, 0.0)  # green if correct
 		_index += 1
@@ -136,5 +136,5 @@ func _finish(success: bool) -> void:
 	if total_chars > 0:
 		accuracy = correct_chars * 100.0 / total_chars
 
-	emit_signal("typing_finished", success, elapsed, _errors, accuracy)
+	typing_finished.emit(success, elapsed, _errors, accuracy)
 	_input.release_focus()
