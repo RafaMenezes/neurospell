@@ -48,40 +48,57 @@ func _reset_state() -> void:
 	_start_time = 0.0
 	_end_time = 0.0
 
+func _make_line() -> HBoxContainer:
+	var h := HBoxContainer.new()
+	h.add_theme_constant_override("separation", 0)
+	h.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	h.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_text_root.add_child(h)
+	_line_containers.append(h)
+	return h
+		
 func _setup_text_labels(text: String) -> void:
 	_char_labels.clear()
 	_line_containers.clear()
-	_text_root.queue_free()  
+	_text_root.queue_free()
+
 	_text_root = VBoxContainer.new()
 	_text_root.name = "TextRoot"
-	_text_root.add_theme_constant_override("separation", 4)
+	_text_root.add_theme_constant_override("separation", 0)
 	add_child(_text_root)
 	target.visible_characters = 0
 
+	# helper function to spawn a clean line container
 
-	var current_line := HBoxContainer.new()
-	_text_root.add_child(current_line)
-	_line_containers.append(current_line)
+
+	var current_line := _make_line()
 
 	for ch in text:
 		if ch == "\n":
-			# create a new line container but still keep a placeholder label
-			var line_break_lbl := Label.new()
-			line_break_lbl.text = ""  # invisible placeholder
-			line_break_lbl.visible = false  # optional, just so there's one "char" entry
-			current_line.add_child(line_break_lbl)
-			_char_labels.append(line_break_lbl)
+			# placeholder to keep char index aligned
+			var placeholder := Label.new()
+			placeholder.text = ""
+			placeholder.visible = false
+			current_line.add_child(placeholder)
+			_char_labels.append(placeholder)
 
-			current_line = HBoxContainer.new()
-			_text_root.add_child(current_line)
-			_line_containers.append(current_line)
+			current_line = _make_line()
 			continue
 
 		var lbl := Label.new()
 		lbl.text = ch
-		lbl.modulate = Color(0.85, 0.85, 0.85)
+		lbl.custom_minimum_size = Vector2.ZERO
+		lbl.clip_text = false
+		lbl.add_theme_constant_override("line_spacing", 0)
+		lbl.add_theme_constant_override("outline_size", 0)
+		lbl.add_theme_font_override("font", target.get_theme_font("font"))
+		lbl.add_theme_font_size_override("font_size", target.get_theme_font_size("font_size"))
+		lbl.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		lbl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+
 		current_line.add_child(lbl)
 		_char_labels.append(lbl)
+
 
 
 func _on_input_changed(new_text: String) -> void:
