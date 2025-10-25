@@ -5,24 +5,11 @@ extends Node
 @onready var recipe_text: Label = $RecipeUI/RecipeText
 @onready var customer: Customer
 
-var prompt_template := """You are a recipe in a cookbook. 
-Output ONLY STANDARD COOKING RECIPE in text format, step-by-step concisely.
-Add a stop token `</s>` when finishes all the recipe instructions.
-
-Base yourself on the following example describing the Yakiniku recipe.
-
-Slice beef (ribeye or short ribs) into thin 1/4 inch pieces against the grain.
-Prepare marinade: Mix 3 tbsp soy sauce, 2 tbsp mirin, 1 tbsp sesame oil, 1 tsp sugar, and minced garlic.
-Marinate beef slices for 30 minutes at room temperature.
-Heat grill or griddle pan to high heat until smoking.
-Brush grill with oil to prevent sticking.
-Grill meat slices for 30-60 seconds per side until caramelized.
-Remove from heat immediately to avoid overcooking.
-Serve with dipping sauce: combine soy sauce, lemon juice, and sesame seeds.
-Accompany with lettuce leaves, sliced garlic, and steamed rice.
-Wrap grilled meat in lettuce with rice and garlic if desired.
-
-{recipe}
+var prompt_template = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are a concise recipe generator. Always respond in plain prose, never in numbered steps or bullet points. Write only the essential cooking process, no introductions, no conclusions, no list of ingredients. Keep it under 100 tokens.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+Write a short and direct cooking recipe for {recipe}. Use two brief natural-language paragraphs, without any bullet points or numbers.
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 """
 
 func _ready() -> void:
