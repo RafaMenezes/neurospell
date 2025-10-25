@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7wa0xb1wxgq2"]
 
-[ext_resource type="Script" uid="uid://ciltmsdyjcf4b" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="1_o5qli"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,38 +9,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_o5qli")
 
 [node name="UI" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 216.0
+offset_bottom = 106.0
 
-[node name="TextContainer" type="HBoxContainer" parent="UI"]
+[node name="Label" type="Label" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
+text = "Heat the oil in a pan.
+Add garlic and onions.
+Cook until soft."
+autowrap_mode = 3
 
-[node name="Input" type="LineEdit" parent="UI"]
-layout_mode = 2
-
-[node name="StatsRow" type="HBoxContainer" parent="UI"]
-layout_mode = 2
-
-[node name="ErrorsLabel" type="Label" parent="UI/StatsRow"]
-layout_mode = 2
-
-[node name="TimerLabel" type="Label" parent="UI/StatsRow"]
-layout_mode = 2
-
-[node name="StreakLabel" type="Label" parent="UI/StatsRow"]
-layout_mode = 2
-
-[node name="Buttons" type="HBoxContainer" parent="UI"]
-layout_mode = 2
-
-[node name="RestartButton" type="Button" parent="UI/Buttons"]
-layout_mode = 2
-text = "Restart"
-
-[node name="ShowResultButton" type="Button" parent="UI/Buttons"]
-layout_mode = 2
-text = "Show Result"
+[node name="TypableText" parent="UI/Label" instance=ExtResource("1_o5qli")]
