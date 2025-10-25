@@ -7,6 +7,7 @@ extends Control
 @onready var target: Label = get_parent() as Label
 @onready var _input := LineEdit.new()
 @onready var _text_root := VBoxContainer.new()
+@onready var llm : LLM = get_tree().get_first_node_in_group("llm")
 
 var _line_containers: Array = []
 var _char_labels: Array = []
@@ -25,10 +26,13 @@ func _ready() -> void:
 	if not target:
 		push_warning("TypableText: No attached Label found. This script must be a sibling or child of a Label node.")
 		return
-
+	
+	llm.generate_text_finished.connect(_on_gdllama_finished)
+	
+func _on_gdllama_finished(text: String):
 	_setup_input()
 	_reset_state()
-	_setup_text_labels(target.text)
+	_setup_text_labels(text)
 
 func _setup_input() -> void:
 	_input.max_length = 1
