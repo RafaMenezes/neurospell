@@ -7,4 +7,5 @@ models/
 *.bin
 *.pt
 *.safetensors
-
+*.log
+.DS_Store
