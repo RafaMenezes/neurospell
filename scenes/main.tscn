@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7wa0xb1wxgq2"]
 
-[ext_resource type="Script" uid="uid://ciltmsdyjcf4b" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ciltmsdyjcf4b" path="res://scripts/main.gd" id="1_o5qli"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_o5qli")
 
 [node name="UI" type="VBoxContainer" parent="."]
 layout_mode = 0

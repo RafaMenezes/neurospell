@@ -159,7 +159,9 @@ func _show_result_popup(text: String) -> void:
 	# replace the next line with `p.add_child(Label.new())` style popup creation.
 	p.dialog_text = text
 	add_child(p)
-	p.popup_centered_minsize(Vector2(300, 120))
+	p.min_size = Vector2(300, 120)
+	p.popup_centered()
+
 
 func _on_RestartButton_pressed() -> void:
 	_input.editable = true
