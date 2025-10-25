@@ -34,9 +34,11 @@ func _ready():
 	
 func _on_gdllama_updated(new_text: String):
 	text_buffer += new_text
-	if new_text.strip_edges() == "</s>":
-		print(text_buffer.strip_edges())
-		gdllama.stop_generate_text()
+	print(text_buffer.strip_edges())
+
+	#if new_text.strip_edges() == "</s>":
+		#print(text_buffer.strip_edges())
+		#gdllama.stop_generate_text()
 
 func _on_gdllama_finished():
 	text_buffer = ""
