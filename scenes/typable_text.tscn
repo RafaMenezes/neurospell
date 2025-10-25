@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c62ifbrid345f"]
+
+[ext_resource type="Script" uid="uid://dpwvilm7qxl15" path="res://scripts/typable_text.gd" id="1_i3m5x"]
+
+[node name="TypableText" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i3m5x")
