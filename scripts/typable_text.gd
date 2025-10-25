@@ -28,10 +28,8 @@ func _ready() -> void:
 	if not target:
 		push_warning("TypableText: No attached Label found. This script must be a sibling or child of a Label node.")
 		return
-	_setup_input()
-	_reset_state()
-	_setup_text_labels(target.text)
-	#llm.generate_text_finished.connect(_on_gdllama_finished)
+
+	llm.generate_text_finished.connect(_on_gdllama_finished)
 	
 func _on_gdllama_finished(text: String):
 	_setup_input()
