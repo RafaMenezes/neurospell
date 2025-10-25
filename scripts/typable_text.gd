@@ -3,7 +3,8 @@ extends Control
 
 @export var max_errors_allowed: int = 3
 @export var auto_focus: bool = true
-@export var sound: AudioStream
+@export var sound_correct: AudioStream
+@export var sound_error: AudioStream
 
 @onready var target: Label = get_parent() as Label
 @onready var _input := LineEdit.new()
@@ -27,8 +28,10 @@ func _ready() -> void:
 	if not target:
 		push_warning("TypableText: No attached Label found. This script must be a sibling or child of a Label node.")
 		return
-	
-	llm.generate_text_finished.connect(_on_gdllama_finished)
+	_setup_input()
+	_reset_state()
+	_setup_text_labels(target.text)
+	#llm.generate_text_finished.connect(_on_gdllama_finished)
 	
 func _on_gdllama_finished(text: String):
 	_setup_input()
@@ -134,9 +137,11 @@ func _process_char(ch: String) -> void:
 
 	char_typed.emit(correct, expected, ch)
 	if correct:
+		SFXPlayer.play(sound_correct)
 		_char_labels[_index].modulate = Color(0.0, 0.7, 0.0)  # green if correct
 		_index += 1
 	else:
+		SFXPlayer.play(sound_error)
 		_char_labels[_index].modulate = Color(0.7, 0.0, 0.0)  # red if incorrect
 		_errors += 1
 

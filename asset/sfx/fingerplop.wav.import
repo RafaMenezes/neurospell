@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d3724r4kfgwru"
-path="res://.godot/imported/glass-break.wav-d88d26cd5837e4815539f80646c17ee0.sample"
+uid="uid://bgq4k6n468yqa"
+path="res://.godot/imported/fingerplop.wav-ba3ad239446ac6600cc359dc054bcc06.sample"
 
 [deps]
 
-source_file="res://asset/sfx/glass-break.wav"
-dest_files=["res://.godot/imported/glass-break.wav-d88d26cd5837e4815539f80646c17ee0.sample"]
+source_file="res://asset/sfx/fingerplop.wav"
+dest_files=["res://.godot/imported/fingerplop.wav-ba3ad239446ac6600cc359dc054bcc06.sample"]
 
 [params]
 
