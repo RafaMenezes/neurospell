@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://qfmo4gm0dphe"]
+
+[ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="1_5v58s"]
+[ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="2_e25md"]
+
+[node name="RecipeUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -791.0
+offset_bottom = -468.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5v58s")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72155, 0.334165, 0.275705, 1)
+
+[node name="RecipeText" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Heat the oil in a pan.
+Add garlic and onions.
+Cook until soft."
+
+[node name="TypableText" parent="RecipeText" instance=ExtResource("2_e25md")]
