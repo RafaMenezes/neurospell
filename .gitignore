@@ -9,3 +9,4 @@ models/
 *.safetensors
 *.log
 .DS_Store
+*.gd.uid

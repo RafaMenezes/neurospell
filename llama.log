@@ -1,7 +1,0 @@
-[1761416258] Log start
-[1761416258] llama_generate_text: build = 3029 (b864b50c)
-[1761416258] llama_generate_text: built with Clang 18.1.6 for 
-[1761416258] llama_generate_text: seed  = 1761416258
-[1761416258] llama_generate_text: llama backend init
-[1761416258] llama_generate_text: load the model and apply lora adapter, if any
-[1761416259] warming up the model with an empty run
