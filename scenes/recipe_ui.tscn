@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ooqmwuq0c0by"]
+[gd_scene load_steps=3 format=3 uid="uid://ooqmwuq0c0by"]
 
 [ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="1_5v58s"]
 [ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="2_e25md"]
-[ext_resource type="AudioStream" uid="uid://4mhs3mfq04g4" path="res://asset/sfx/glass-break.wav" id="3_uubuk"]
 
 [node name="RecipeUI" type="Control"]
 layout_mode = 3
@@ -34,4 +33,3 @@ Add garlic and onions.
 Cook until soft."
 
 [node name="TypableText" parent="RecipeText" instance=ExtResource("2_e25md")]
-sound_error = ExtResource("3_uubuk")
