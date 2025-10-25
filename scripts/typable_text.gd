@@ -3,6 +3,7 @@ extends Control
 
 @export var max_errors_allowed: int = 3
 @export var auto_focus: bool = true
+@export var sound: AudioStream
 
 @onready var target: Label = get_parent() as Label
 @onready var _input := LineEdit.new()
