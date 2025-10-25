@@ -25,6 +25,7 @@ func _ready() -> void:
 	if not target:
 		push_warning("TypableText: No attached Label found. This script must be a sibling or child of a Label node.")
 		return
+	#target.text = "Heat the oil in a pan.\nAdd garlic and onions.\nCook until soft."
 
 	_setup_input()
 	_reset_state()
@@ -50,7 +51,7 @@ func _reset_state() -> void:
 func _setup_text_labels(text: String) -> void:
 	_char_labels.clear()
 	_line_containers.clear()
-	_text_root.queue_free()  # Remove old one if re-initializing
+	_text_root.queue_free()  
 	_text_root = VBoxContainer.new()
 	_text_root.name = "TextRoot"
 	_text_root.add_theme_constant_override("separation", 4)
@@ -64,15 +65,24 @@ func _setup_text_labels(text: String) -> void:
 
 	for ch in text:
 		if ch == "\n":
+			# create a new line container but still keep a placeholder label
+			var line_break_lbl := Label.new()
+			line_break_lbl.text = ""  # invisible placeholder
+			line_break_lbl.visible = false  # optional, just so there's one "char" entry
+			current_line.add_child(line_break_lbl)
+			_char_labels.append(line_break_lbl)
+
 			current_line = HBoxContainer.new()
 			_text_root.add_child(current_line)
 			_line_containers.append(current_line)
 			continue
+
 		var lbl := Label.new()
 		lbl.text = ch
 		lbl.modulate = Color(0.85, 0.85, 0.85)
 		current_line.add_child(lbl)
 		_char_labels.append(lbl)
+
 
 func _on_input_changed(new_text: String) -> void:
 	if new_text.is_empty():
@@ -93,7 +103,13 @@ func _process_char(ch: String) -> void:
 		return
 
 	var expected := text_to_type[_index]
+	
+	if expected == "\n":
+		_index += 1
+		expected = text_to_type[_index]
+		
 	var correct := ch == expected
+
 	emit_signal("char_typed", correct, expected, ch)
 	if correct:
 		_char_labels[_index].modulate = Color(0.0, 0.7, 0.0)  # green if correct

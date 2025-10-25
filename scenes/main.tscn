@@ -12,12 +12,16 @@ grow_vertical = 2
 
 [node name="UI" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 216.0
+offset_bottom = 106.0
 
 [node name="Label" type="Label" parent="UI"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
-text = "Type this sample text!"
+text = "Heat the oil in a pan.
+Add garlic and onions.
+Cook until soft."
+autowrap_mode = 3
 
 [node name="TypableText" parent="UI/Label" instance=ExtResource("1_o5qli")]
