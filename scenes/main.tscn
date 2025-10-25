@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7wa0xb1wxgq2"]
+[gd_scene load_steps=4 format=3 uid="uid://c7wa0xb1wxgq2"]
 
-[ext_resource type="PackedScene" uid="uid://qfmo4gm0dphe" path="res://scenes/recipe_ui.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://b7qdbogggx28k" path="res://scripts/game.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://ooqmwuq0c0by" path="res://scenes/recipe_ui.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://1v8nfmdt4gfa" path="res://scenes/LLM.tscn" id="2_sugp2"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,6 +11,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sugp2")
 
 [node name="RecipeUI" parent="." instance=ExtResource("2_0wfyh")]
 layout_mode = 1
+
+[node name="LLM" parent="." instance=ExtResource("2_sugp2")]
