@@ -23,8 +23,7 @@ var _start_time: float = 0.0
 var _end_time: float = 0.0
 var _current_streak: int = 0
 var _longest_streak: int = 04
-var gdllama: GDLlama
-var buffer := ""
+
 
 
 func _ready() -> void:
@@ -36,42 +35,6 @@ func _ready() -> void:
 	_restart_button.connect("pressed", Callable(self, "_on_RestartButton_pressed"))
 	_setup_text_display(text_to_type)
 	_update_stats_labels()
-	gdllama = GDLlama.new()
-	gdllama.model_path = "./models/Meta-Llama-3-8B-Instruct-Q5_K_M.gguf"
-	gdllama.n_predict = 150
-	gdllama.interactive = false
-	gdllama.should_output_prompt = false
-	gdllama.generate_text_updated.connect(_on_gdllama_updated)
-	var prompt = """Instruction: You are a spell described in around 20 Latin words in an ancient wizard's parchment.
-Output only the exact words of the spell, with no extra explanation or repetition of this instruction.
-Output the spell enclosed in triple quotes, and do not include anything else.
-
-\"\"\" """
-
-	buffer = ""
-
-
-	gdllama.run_generate_text(prompt, "", "")
-	
-func _on_gdllama_updated(new_text: String):
-	buffer += new_text
-
-	# Check if the closing triple quotes are present
-	var end_index = buffer.find('"""')
-	if end_index != -1:
-		# Print everything up to and including the closing quotes
-		print(buffer.substr(0, end_index + 3))
-		#buffer = ""  # Clear buffer
-		gdllama.stop_generate_text()  # Stop the running generation
-		print("Stopped")
-		return buffer.substr(0, end_index + 3)
-
-	# Otherwise, flush complete lines as usual
-	#while '\n' in buffer:
-		#var line = buffer.substr(0, buffer.find('\n')+1)
-		#print(line)
-		#buffer = buffer.substr(buffer.find('\n')+1)
-
 
 func post_process_text(text: String) -> String:
 	return text.rstrip('"""')
