@@ -1,7 +1,0 @@
-[1761404198] Log start
-[1761404198] llama_generate_text: build = 3029 (b864b50c)
-[1761404198] llama_generate_text: built with Apple clang version 15.0.0 (clang-1500.0.40.1) for arm64-apple-darwin23.5.0
-[1761404198] llama_generate_text: seed  = 1761404198
-[1761404198] llama_generate_text: llama backend init
-[1761404198] llama_generate_text: load the model and apply lora adapter, if any
-[1761404198] llama_generate_text: error: unable to load model
