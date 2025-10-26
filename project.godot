@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Neurospell"
-run/main_scene="uid://c7wa0xb1wxgq2"
+run/main_scene="uid://6q7yww3o65m6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SFXPlayer="*res://global/sfx_player.tscn"
+LLM="*res://scenes/LLM.tscn"
+Events="*res://scenes/Events.tscn"
 
 [display]
 

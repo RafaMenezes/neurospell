@@ -1,4 +1,4 @@
-class_name LLM
+#class_name LLM
 extends Node
 
 var gdllama: GDLlama
@@ -37,7 +37,7 @@ func _post_process_text(text: String, max_len: int, line_break: int) -> String:
 			# reached 100 characters total → truncate and end with ". . ."
 			if line.strip_edges() != "":
 				result += line.strip_edges() + " \n"
-			result = result.substr(0, max_len).strip_edges() + ". . ."
+			result = result.substr(0, max_len).strip_edges() + "..."
 			return result
 
 		if next_len > line_break:

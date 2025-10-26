@@ -9,7 +9,6 @@ extends Control
 @onready var target: Label = get_parent() as Label
 @onready var _input := LineEdit.new()
 @onready var _text_root := VBoxContainer.new()
-@onready var llm : LLM = get_tree().get_first_node_in_group("llm")
 
 var _line_containers: Array = []
 var _char_labels: Array = []
@@ -30,9 +29,9 @@ func _ready() -> void:
 		return
 
 	_input.text_changed.connect(_on_input_changed)
-	llm.generate_text_finished.connect(_on_gdllama_finished)
+	Events.text_configured.connect(_on_text_configured)
 	
-func _on_gdllama_finished(text: String) -> void:
+func _on_text_configured(text: String) -> void:
 	target.text = text
 	_setup_input()
 	_reset_state()

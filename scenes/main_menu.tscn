@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://6q7yww3o65m6"]
+
+[ext_resource type="Script" uid="uid://coxgxrt30wvhp" path="res://main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="2_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="2_ekxnf"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Hint" type="Label" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 497.0
+offset_right = 513.0
+offset_bottom = 536.0
+rotation = -0.722461
+theme = ExtResource("2_bqqt6")
+text = "type"
+
+[node name="Play" type="Label" parent="."]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 482.0
+offset_right = 835.0
+offset_bottom = 632.0
+theme = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 200
+text = "Play"
+
+[node name="TypableText" parent="Play" instance=ExtResource("2_ekxnf")]

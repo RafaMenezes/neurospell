@@ -1,6 +1,6 @@
 extends Node
 
-@onready var llm: Node = $LLM
+@onready var llm: LLM = $LLM
 @onready var recipe_ui: Control = $RecipeUI
 @onready var recipe_text: Label = $RecipeUI/RecipeText
 @onready var customer: Customer
@@ -18,6 +18,7 @@ func _ready() -> void:
 	var typable_text: TypableText = recipe_ui.get_child(1).get_child(0) #temporario, meio merda
 	typable_text.typing_started.connect(_on_typing_started)
 	typable_text.typing_finished.connect(_on_typing_finished)
+	llm.generate_text_finished.connect(_on_gdllama_finished)
 	
 	round_timer.visible = false
 	round_timer.stop()
@@ -52,3 +53,6 @@ func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy
 	print("Accuracy: ", accuracy)
 	round_timer.stop()
 	round_timer.visible = false
+	
+func _on_gdllama_finished(text: String) -> void:
+	Events.text_configured.emit(text)
