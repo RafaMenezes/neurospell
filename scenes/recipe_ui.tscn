@@ -29,9 +29,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Heat the oil in a pan.
-Add garlic and onions.
-Cook until soft."
+text = "Loading recipe..."
 
 [node name="TypableText" parent="RecipeText" instance=ExtResource("2_e25md")]
 sound_error = ExtResource("3_uubuk")

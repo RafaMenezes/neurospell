@@ -20,7 +20,7 @@ var _started: bool = false
 var _start_time: float = 0.0
 var _end_time: float = 0.0
 
-signal typing_started
+signal typing_started(text: String)
 signal char_typed(correct: bool, expected: String, typed: String)
 signal typing_finished(success: bool, time_taken: float, errors: int, accuracy: float)
 
@@ -119,7 +119,7 @@ func _process_char(ch: String) -> void:
 	if not _started:
 		_started = true
 		_start_time = Time.get_ticks_msec() / 1000.0
-		typing_started.emit()
+		typing_started.emit(target.text)
 
 	var text_to_type: String = target.text
 	if _index >= text_to_type.length():
