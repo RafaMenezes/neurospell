@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckijlqytmeexi"]
+[gd_scene load_steps=3 format=3 uid="uid://cb5mi4uf34s0a"]
 
-[ext_resource type="Script" uid="uid://cmniips5gl3pn" path="res://scenes/global_stats_display.gd" id="1_5mnmy"]
+[ext_resource type="Script" uid="uid://bmtkfnxi1e0r" path="res://scenes/global_stats_display.gd" id="1_5mnmy"]
 [ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="2_kb7hu"]
 
 [node name="GlobalStatsDisplay" type="Control"]
