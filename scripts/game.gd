@@ -1,10 +1,10 @@
 extends Node
 
 @onready var llm: LLM = $LLM
-@onready var customer: Customer
 @onready var recipe_ui_scene := preload("res://scenes/recipe_ui.tscn")
 @onready var recipe_text_displayed: bool = false
-
+@onready var customer_scene := preload("res://scenes/customer.tscn")
+var customer: Customer
 @export var round_timer: RoundTimer
 
 var prompt_template = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
@@ -14,16 +14,20 @@ Write a short and direct cooking recipe for {recipe}. Use two brief natural-lang
 <|eot_id|><|start_header_id|>assistant<|end_header_id|>
 """
 
+func spawn_customer():
+	customer = customer_scene.instantiate()
+	add_child(customer)
+
 func _ready() -> void:
 	llm.generate_text_finished.connect(_on_gdllama_finished)
 	
 	round_timer.visible = false
 	round_timer.stop()
 	round_timer.time_up.connect(_on_time_up)
+
+	spawn_customer()
 	
-	customer = Customer.new("Tomato soup", "Jun", 70)
-	
-	var prompt = prompt_template.format({"recipe": customer.recipe})
+	var prompt = prompt_template.format({"recipe": customer.data.recipe})
 	llm.run_generate_text(prompt)
 	print("generating text...")
 
@@ -31,7 +35,7 @@ func _ready() -> void:
 func _on_typing_started(text: String) -> void:
 	var word_count = text.split(" ", false).size()
 	# compute seconds: characters -> reading speed in words-per-minute; keep your formula
-	var max_time = word_count * 60.0 / customer.wpm
+	var max_time = word_count * 60.0 / customer.data.wpm
 	round_timer.visible = true
 	round_timer.start(max_time)
 	

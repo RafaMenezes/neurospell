@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://1v8nfmdt4gfa" path="res://scenes/LLM.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://bd5flrqjsu5rv" path="res://asset/tex/background_gameplay.png" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://1jtcau57us8w" path="res://scenes/round_timer.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://b6phgqa5dlnls" path="res://asset/tex/golem.png" id="6_choun"]
 [ext_resource type="Texture2D" uid="uid://bw7vi32pfwt66" path="res://asset/tex/wiz.png" id="6_tefeu"]
-[ext_resource type="Texture2D" uid="uid://bs7imgvpqk5si" path="res://asset/tex/customer1.png" id="7_o6xl0"]
-[ext_resource type="Script" uid="uid://5wn25k5rv2j1" path="res://scripts/customer_behavior.gd" id="8_choun"]
+[ext_resource type="Texture2D" uid="uid://bxhg6g4t2ni83" path="res://asset/tex/counter_table.png" id="7_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://6sipn3fjmp3l" path="res://asset/music/medieval_tavern.wav" id="8_tipki"]
 [ext_resource type="AudioStream" uid="uid://dk4cg6xp1fg3e" path="res://asset/music/tavern_ambience.wav" id="9_85g3d"]
 
@@ -36,17 +36,19 @@ radius = 64.0
 inner_radius = 48.0
 
 [node name="Wiz" type="Sprite2D" parent="."]
-position = Vector2(150, 600)
+position = Vector2(186, 478)
 scale = Vector2(0.5, 0.429)
 texture = ExtResource("6_tefeu")
 
 [node name="Golem" type="Sprite2D" parent="."]
-
-[node name="Customer" type="Sprite2D" parent="."]
-position = Vector2(709, 544)
+position = Vector2(356, 517)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_o6xl0")
-script = ExtResource("8_choun")
+texture = ExtResource("6_choun")
+
+[node name="CounterTable" type="Sprite2D" parent="."]
+position = Vector2(291.315, 630)
+scale = Vector2(1.52715, 0.926471)
+texture = ExtResource("7_ya4ey")
 
 [node name="TavernMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_tipki")
