@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7wa0xb1wxgq2"]
+[gd_scene load_steps=10 format=3 uid="uid://c7wa0xb1wxgq2"]
 
-[ext_resource type="Script" uid="uid://ckkukpy1h0w4j" path="res://scripts/game.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://b7qdbogggx28k" path="res://scripts/game.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://1v8nfmdt4gfa" path="res://scenes/LLM.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://bd5flrqjsu5rv" path="res://asset/tex/background_gameplay.png" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://1jtcau57us8w" path="res://scenes/round_timer.tscn" id="5_tbgi4"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var customer_sprite: Sprite2D = $Customer
+@onready var round_timer: RoundTimer = $"../RoundTimer"
 
 @export_group("Movement Settings")
 @export var destination_position: Vector2 = Vector2(500, 600)
@@ -9,16 +10,21 @@ extends Node2D
 
 var tween: Tween
 var is_moving: bool = false
+var spawn_pos: Vector2
 
 func _ready() -> void:
 	# Set initial spawn position outside screen
 	_set_spawn_position()
 	# Start sliding to destination
 	slide_to_position(destination_position)
+	
+	round_timer.time_up.connect(_on_time_up)
+
+func _on_time_up():
+	slide_to_position(spawn_pos)
 
 func _set_spawn_position() -> void:
 	var viewport_rect = get_viewport_rect()
-	var spawn_pos: Vector2
 	spawn_pos = Vector2(viewport_rect.size.x + spawn_offset, destination_position.y)
 	position = spawn_pos
 
