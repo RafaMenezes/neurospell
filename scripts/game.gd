@@ -61,7 +61,6 @@ func _on_gdllama_finished(text: String) -> void:
 	var recipe_ui_instance := recipe_ui_scene.instantiate() as Control
 	add_child(recipe_ui_instance)
 	recipe_text_displayed = true
-	print("HERE")
 	
 	var ninepatch: NinePatchRect = recipe_ui_instance.get_node("NinePatchRect")
 	var typable_text := recipe_ui_instance.get_node("NinePatchRect/MarginContainer/RecipeText/TypableText") as TypableText
