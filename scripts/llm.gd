@@ -34,21 +34,26 @@ func _post_process_text(text: String, max_len: int, line_break: int) -> String:
 	for word in words:
 		var next_len := line.length() + word.length() + 1  # +1 for space
 		if total_chars + next_len > max_len:
-			# reached 100 characters total → truncate and end with "..."
+			# truncate without cutting in the middle of a word
 			if line.strip_edges() != "":
 				result += line.strip_edges() + " \n"
-			result = result.substr(0, max_len).strip_edges() + "..."
-			return result
+			var truncated := result.substr(0, max_len)
+			
+			# find the last space before max_len to avoid cutting a word
+			var last_space := truncated.rfind(" ")
+			if last_space != -1:
+				truncated = truncated.substr(0, last_space)
+			
+			truncated = truncated.strip_edges() + "..."
+			return truncated
 
 		if next_len > line_break:
-			# wrap line at word boundary
 			result += line.strip_edges() + " \n"
 			total_chars += line.length()
 			line = word + " "
 		else:
 			line += word + " "
 
-	# flush last line
 	if line.strip_edges() != "":
 		result += line.strip_edges()
 
