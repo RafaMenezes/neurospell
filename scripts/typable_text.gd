@@ -73,6 +73,7 @@ func _setup_text_labels(text: String) -> void:
 	_text_root.add_theme_constant_override("separation", 0)
 	add_child(_text_root)
 	target.visible_characters = 0
+	target.text = text
 
 	# helper function to spawn a clean line container
 
@@ -132,6 +133,9 @@ func _process_char(ch: String) -> void:
 		expected = text_to_type[_index]
 		
 	var correct := ch == expected
+	
+	print("typed: ", ch)
+	print("expected: ", expected)
 
 	char_typed.emit(correct, expected, ch)
 	if correct:
