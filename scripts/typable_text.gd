@@ -1,7 +1,7 @@
 class_name TypableText
 extends Control
 
-@export var max_errors_allowed: int = 3
+@export var max_errors_allowed: int = 999
 @export var auto_focus: bool = true
 @export var sound_correct: AudioStream
 @export var sound_error: AudioStream
@@ -32,7 +32,7 @@ func _ready() -> void:
 	_input.text_changed.connect(_on_input_changed)
 	llm.generate_text_finished.connect(_on_gdllama_finished)
 	
-func _on_gdllama_finished(text: String):
+func _on_gdllama_finished(text: String) -> void:
 	target.text = text
 	_setup_input()
 	_reset_state()
@@ -77,8 +77,6 @@ func _setup_text_labels(text: String) -> void:
 	target.text = text
 
 	# helper function to spawn a clean line container
-
-
 	var current_line := _make_line()
 
 	for ch in text:
@@ -135,8 +133,6 @@ func _process_char(ch: String) -> void:
 		
 	var correct := ch == expected
 	
-	print("typed: ", ch)
-	print("expected: ", expected)
 
 	char_typed.emit(correct, expected, ch)
 	if correct:
@@ -147,6 +143,7 @@ func _process_char(ch: String) -> void:
 		SFXPlayer.play(sound_error)
 		_char_labels[_index].modulate = Color(0.7, 0.0, 0.0)  # red if incorrect
 		_errors += 1
+		_index += 1
 
 	if _errors > max_errors_allowed:
 		_finish(false)
