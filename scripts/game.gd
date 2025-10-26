@@ -38,20 +38,28 @@ func _on_typing_started(text: String) -> void:
 	var max_time = word_count * 60.0 / customer.data.wpm
 	round_timer.visible = true
 	round_timer.start(max_time)
+
+func remove_recipe_ui(success: bool) -> void:
+	var recipe_ui = get_tree().get_first_node_in_group("recipeui")
+	var typable_text := recipe_ui.get_node("NinePatchRect/MarginContainer/RecipeText/TypableText") as TypableText
+	recipe_ui.queue_free()
+	recipe_text_displayed = false
+	
 	
 func _on_time_up() -> void:
 	print("You didn't make it in time! The customer leaves very angry...")
 	round_timer.stop()
 	
-	var recipe_ui = get_tree().get_first_node_in_group("recipeui")
-	recipe_ui.queue_free()
-	
-	recipe_text_displayed = false
+	remove_recipe_ui(false)
+	Stats.sad_customers += 1
 
 func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy: float) -> void:
 	if success:
+		Stats.happy_customers += 1
+		remove_recipe_ui(true)
 		print("You made it! The customer is happy!")
 	else:
+		Stats.sad_customers += 1
 		print("The food turned out CRAP! The customer leaves very angry...")
 		
 	print("Total errors: ", errors)

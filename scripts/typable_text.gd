@@ -164,5 +164,6 @@ func _finish(success: bool) -> void:
 	if total_chars > 0:
 		accuracy = correct_chars * 100.0 / total_chars
 
+	Stats.update_global_stats(total_chars, _errors)
 	typing_finished.emit(success, elapsed, _errors, accuracy)
 	_input.release_focus()

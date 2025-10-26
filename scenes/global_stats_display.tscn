@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckijlqytmeexi"]
+
+[ext_resource type="Script" uid="uid://cmniips5gl3pn" path="res://scenes/global_stats_display.gd" id="1_5mnmy"]
+[ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="2_kb7hu"]
+
+[node name="GlobalStatsDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5mnmy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 30.0
+offset_right = 1283.0
+offset_bottom = 119.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_kb7hu")
+theme_override_font_sizes/font_size = 35
+text = "Global Score"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Accuracy" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharsTyped" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35

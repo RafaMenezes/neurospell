@@ -1,14 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7wa0xb1wxgq2"]
+[gd_scene load_steps=11 format=3 uid="uid://c7wa0xb1wxgq2"]
 
-[ext_resource type="Script" uid="uid://b7qdbogggx28k" path="res://scripts/game.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://ckkukpy1h0w4j" path="res://scripts/game.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://1v8nfmdt4gfa" path="res://scenes/LLM.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://bd5flrqjsu5rv" path="res://asset/tex/background_gameplay.png" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://1jtcau57us8w" path="res://scenes/round_timer.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://b6phgqa5dlnls" path="res://asset/tex/golem.png" id="6_choun"]
 [ext_resource type="Texture2D" uid="uid://bw7vi32pfwt66" path="res://asset/tex/wiz.png" id="6_tefeu"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://bxhg6g4t2ni83" path="res://asset/tex/counter_table.png" id="7_ya4ey"]
+=======
+[ext_resource type="Texture2D" uid="uid://bs7imgvpqk5si" path="res://asset/tex/customer1.png" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://dtfgdc57t4i1g" path="res://scripts/customer_behavior.gd" id="8_choun"]
+>>>>>>> 0c4145d8fb326f74b6360fd864f656d24baabc18
 [ext_resource type="AudioStream" uid="uid://6sipn3fjmp3l" path="res://asset/music/medieval_tavern.wav" id="8_tipki"]
 [ext_resource type="AudioStream" uid="uid://dk4cg6xp1fg3e" path="res://asset/music/tavern_ambience.wav" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://ckijlqytmeexi" path="res://scenes/global_stats_display.tscn" id="10_choun"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("round_timer")]
 layout_mode = 3
@@ -31,7 +37,7 @@ expand_mode = 1
 [node name="LLM" parent="." instance=ExtResource("2_sugp2")]
 
 [node name="RoundTimer" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(1155, 120)
+position = Vector2(1115, 566)
 radius = 64.0
 inner_radius = 48.0
 
@@ -61,3 +67,6 @@ stream = ExtResource("9_85g3d")
 volume_db = -15.0
 autoplay = true
 mix_target = 1
+
+[node name="GlobalStatsDisplay" parent="." instance=ExtResource("10_choun")]
+layout_mode = 1
