@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var customer_sprite: Sprite2D = $Customer
+@onready var customer_sprite: Sprite2D = $"."
 @onready var round_timer: RoundTimer = $"../RoundTimer"
 @onready var foods := [
 	"Pizza Margherita",
@@ -65,14 +65,15 @@ var is_moving: bool = false
 var spawn_pos: Vector2
 
 func _ready() -> void:
+	round_timer.time_up.connect(_on_time_up)
+	
 	# Set initial spawn position outside screen
 	_set_spawn_position()
 	# Start sliding to destination
 	slide_to_position(destination_position)
-	
-	round_timer.time_up.connect(_on_time_up)
 
 func _on_time_up():
+	customer_sprite.flip_h = true
 	slide_to_position(spawn_pos)
 
 func _set_spawn_position() -> void:
