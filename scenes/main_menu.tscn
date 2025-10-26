@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://6q7yww3o65m6"]
+[gd_scene load_steps=5 format=3 uid="uid://6q7yww3o65m6"]
 
-[ext_resource type="Script" uid="uid://coxgxrt30wvhp" path="res://main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://brrvvpax0d0el" path="res://main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://b8hmv1r7j7vit" path="res://asset/tex/background_concept_art.png" id="2_wu84c"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,22 +14,37 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
+[node name="Background" type="TextureRect" parent="."]
+offset_top = -179.0
+offset_right = 1275.0
+offset_bottom = 1357.0
+texture = ExtResource("2_wu84c")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 254.0
+offset_right = 1054.0
+offset_bottom = 150.0
+theme = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 200
+text = "Cookin' Spell"
+horizontal_alignment = 1
+
 [node name="Hint" type="Label" parent="."]
 layout_mode = 0
-offset_left = 428.0
-offset_top = 392.0
-offset_right = 500.0
-offset_bottom = 431.0
+offset_left = 416.0
+offset_top = 433.609
+offset_right = 488.0
+offset_bottom = 472.609
 rotation = -0.722461
 theme = ExtResource("2_bqqt6")
 text = "type"
 
 [node name="Play" type="Label" parent="."]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 375.0
-offset_right = 800.0
-offset_bottom = 525.0
+offset_left = 500.0
+offset_top = 416.609
+offset_right = 788.0
+offset_bottom = 566.609
 theme = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 200
 text = "play"
@@ -38,10 +54,10 @@ auto_focus = false
 
 [node name="Quit" type="Label" parent="."]
 layout_mode = 0
-offset_left = 529.0
-offset_top = 526.0
-offset_right = 817.0
-offset_bottom = 676.0
+offset_left = 517.0
+offset_top = 567.609
+offset_right = 805.0
+offset_bottom = 717.609
 theme = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 200
 text = "quit"

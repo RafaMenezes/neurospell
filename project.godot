@@ -29,3 +29,8 @@ window/size/viewport_height=720
 [global_group]
 
 llm=""
+
+[gui]
+
+theme/custom="uid://bmys3sottuoxl"
+theme/custom_font="uid://b6h44kfm4jv8t"
