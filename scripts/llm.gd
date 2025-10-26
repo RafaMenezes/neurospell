@@ -12,7 +12,7 @@ func _ready() -> void:
 	gdllama.n_predict = 50
 	gdllama.interactive = false
 	gdllama.should_output_prompt = false
-	gdllama.generate_text_updated.connect(_on_gdllama_updated.bind(100,30))
+	gdllama.generate_text_updated.connect(_on_gdllama_updated.bind(150,30))
 	
 func run_generate_text(prompt: String) -> void:
 	gdllama.run_generate_text(prompt, "", "")
@@ -36,13 +36,13 @@ func _post_process_text(text: String, max_len: int, line_break: int) -> String:
 		if total_chars + next_len > max_len:
 			# reached 100 characters total → truncate and end with ". . ."
 			if line.strip_edges() != "":
-				result += line.strip_edges() + "\n"
+				result += line.strip_edges() + " \n"
 			result = result.substr(0, max_len).strip_edges() + ". . ."
 			return result
 
 		if next_len > line_break:
 			# wrap line at word boundary
-			result += line.strip_edges() + "\n"
+			result += line.strip_edges() + " \n"
 			total_chars += line.length()
 			line = word + " "
 		else:

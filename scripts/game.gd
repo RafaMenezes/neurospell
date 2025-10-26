@@ -23,7 +23,7 @@ func _ready() -> void:
 	round_timer.stop()
 	round_timer.time_up.connect(_on_time_up)
 	
-	customer = Customer.new("Cheesecake", "Jun", 70)
+	customer = Customer.new("Tomato soup", "Jun", 70)
 	
 	var prompt = prompt_template.format({"recipe": customer.recipe})
 	llm.run_generate_text(prompt)
@@ -32,11 +32,8 @@ func _ready() -> void:
 
 func _on_typing_started(text: String) -> void:
 	var word_count = text.split(" ", false).size()
-	print("text size: ", word_count)
 	# compute seconds: characters -> reading speed in words-per-minute; keep your formula
-	print("customer wpm: ", customer.wpm)
 	var max_time = word_count * 60.0 / customer.wpm
-	print(max_time)
 	round_timer.visible = true
 	round_timer.start(max_time)
 	
