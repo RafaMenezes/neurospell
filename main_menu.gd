@@ -43,6 +43,9 @@ func _on_play_typing_finished(success: bool, time_taken: float, errors: int, acc
 	if errors > 0:
 		_reset_menu_typable(play_typable_text, play.text)
 		return
+	Stats.happy_customers = 0
+	Stats.sad_customers = 0
+	Stats.global_accuracy = 0.0
 	get_tree().change_scene_to_packed(game_scene)
 
 

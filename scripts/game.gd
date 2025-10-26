@@ -40,14 +40,18 @@ func _on_time_up() -> void:
 	round_timer.stop()
 	
 	var recipe_ui = get_tree().get_first_node_in_group("recipeui")
+	var typable_text := recipe_ui.get_node("NinePatchRect/MarginContainer/RecipeText/TypableText") as TypableText
+	typable_text._finish(false)
 	recipe_ui.queue_free()
 	
 	recipe_text_displayed = false
 
 func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy: float) -> void:
 	if success:
+		Stats.happy_customers += 1
 		print("You made it! The customer is happy!")
 	else:
+		Stats.sad_customers += 1
 		print("The food turned out CRAP! The customer leaves very angry...")
 		
 	print("Total errors: ", errors)
