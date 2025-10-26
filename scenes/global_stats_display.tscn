@@ -14,10 +14,10 @@ script = ExtResource("1_5mnmy")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 1059.0
+offset_left = 882.0
 offset_top = 30.0
-offset_right = 1460.0
-offset_bottom = 93.0
+offset_right = 1283.0
+offset_bottom = 119.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -35,6 +35,14 @@ text = "Global Score"
 layout_mode = 2
 
 [node name="Accuracy" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharsTyped" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
