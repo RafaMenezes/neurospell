@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="2_e25md"]
 [ext_resource type="AudioStream" uid="uid://4mhs3mfq04g4" path="res://asset/sfx/glass-break.wav" id="3_uubuk"]
 
-[node name="RecipeUI" type="Control"]
+[node name="RecipeUI" type="Control" groups=["recipeui"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
