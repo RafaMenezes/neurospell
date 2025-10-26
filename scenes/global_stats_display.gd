@@ -9,4 +9,4 @@ func _ready() -> void:
 	
 	
 func _on_global_stats_updated(global_accuracy, happy_customers, sad_customers, total_chars_typed, total_errors):
-	accuracy.text = str(round(global_accuracy)) + "%"
+	accuracy.text = "Accuracy: " + str(round(global_accuracy)) + "%"

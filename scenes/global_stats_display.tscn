@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckijlqytmeexi"]
+[gd_scene load_steps=3 format=3 uid="uid://ckijlqytmeexi"]
 
 [ext_resource type="Script" uid="uid://cmniips5gl3pn" path="res://scenes/global_stats_display.gd" id="1_5mnmy"]
+[ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="2_kb7hu"]
 
 [node name="GlobalStatsDisplay" type="Control"]
 layout_mode = 3
@@ -13,11 +14,27 @@ script = ExtResource("1_5mnmy")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 1070.0
-offset_top = 227.0
-offset_right = 1110.0
-offset_bottom = 267.0
+offset_left = 1059.0
+offset_top = 30.0
+offset_right = 1460.0
+offset_bottom = 93.0
 
-[node name="Accuracy" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_kb7hu")
+theme_override_font_sizes/font_size = 35
+text = "Global Score"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Accuracy" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 35
