@@ -3,6 +3,7 @@ extends Node
 @onready var llm: LLM = $LLM
 @onready var customer: Customer
 @onready var recipe_ui_scene := preload("res://scenes/recipe_ui.tscn")
+@onready var recipe_text_displayed: bool = false
 
 @export var round_timer: RoundTimer
 
@@ -37,6 +38,11 @@ func _on_typing_started(text: String) -> void:
 func _on_time_up() -> void:
 	print("You didn't make it in time! The customer leaves very angry...")
 	round_timer.stop()
+	
+	var recipe_ui = get_tree().get_first_node_in_group("recipeui")
+	recipe_ui.queue_free()
+	
+	recipe_text_displayed = false
 
 func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy: float) -> void:
 	if success:
@@ -50,8 +56,11 @@ func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy
 	round_timer.visible = false
 	
 func _on_gdllama_finished(text: String) -> void:
+	if recipe_text_displayed:
+		return
 	var recipe_ui_instance := recipe_ui_scene.instantiate() as Control
 	add_child(recipe_ui_instance)
+	recipe_text_displayed = true
 	
 	var ninepatch: NinePatchRect = recipe_ui_instance.get_node("NinePatchRect")
 	var typable_text := recipe_ui_instance.get_node("NinePatchRect/MarginContainer/RecipeText/TypableText") as TypableText
