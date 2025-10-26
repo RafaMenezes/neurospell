@@ -31,8 +31,9 @@ func _ready() -> void:
 	_input.text_changed.connect(_on_input_changed)
 	Events.text_configured.connect(_on_text_configured)
 	
-func _on_text_configured(text: String) -> void:
-	target.text = text
+func _on_text_configured(text: String, replace: bool) -> void:
+	if replace:
+		target.text = text
 	_setup_input()
 	_reset_state()
 	_setup_text_labels(target.text)
@@ -131,7 +132,6 @@ func _process_char(ch: String) -> void:
 		expected = text_to_type[_index]
 		
 	var correct := ch == expected
-	
 
 	char_typed.emit(correct, expected, ch)
 	if correct:

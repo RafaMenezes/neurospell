@@ -15,22 +15,36 @@ script = ExtResource("1_l6cm7")
 
 [node name="Hint" type="Label" parent="."]
 layout_mode = 0
-offset_left = 441.0
-offset_top = 497.0
-offset_right = 513.0
-offset_bottom = 536.0
+offset_left = 428.0
+offset_top = 392.0
+offset_right = 500.0
+offset_bottom = 431.0
 rotation = -0.722461
 theme = ExtResource("2_bqqt6")
 text = "type"
 
 [node name="Play" type="Label" parent="."]
 layout_mode = 0
-offset_left = 547.0
-offset_top = 482.0
-offset_right = 835.0
-offset_bottom = 632.0
+offset_left = 512.0
+offset_top = 375.0
+offset_right = 800.0
+offset_bottom = 525.0
 theme = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 200
-text = "Play"
+text = "play"
 
 [node name="TypableText" parent="Play" instance=ExtResource("2_ekxnf")]
+auto_focus = false
+
+[node name="Quit" type="Label" parent="."]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 526.0
+offset_right = 817.0
+offset_bottom = 676.0
+theme = ExtResource("2_bqqt6")
+theme_override_font_sizes/font_size = 200
+text = "quit"
+
+[node name="TypableText" parent="Quit" instance=ExtResource("2_ekxnf")]
+auto_focus = false

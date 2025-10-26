@@ -55,4 +55,4 @@ func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy
 	round_timer.visible = false
 	
 func _on_gdllama_finished(text: String) -> void:
-	Events.text_configured.emit(text)
+	Events.text_configured.emit(text, true)
