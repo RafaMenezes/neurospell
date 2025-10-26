@@ -29,12 +29,14 @@ func _ready() -> void:
 		push_warning("TypableText: No attached Label found. This script must be a sibling or child of a Label node.")
 		return
 
+	_input.text_changed.connect(_on_input_changed)
 	llm.generate_text_finished.connect(_on_gdllama_finished)
 	
 func _on_gdllama_finished(text: String):
+	target.text = text
 	_setup_input()
 	_reset_state()
-	_setup_text_labels(text)
+	_setup_text_labels(target.text)
 
 func _setup_input() -> void:
 	_input.max_length = 1
@@ -42,7 +44,6 @@ func _setup_input() -> void:
 	# making it invisible makes input handling stop working, so push it to some place out of sight
 	_input.position.x = -99999 
 	add_child(_input)
-	_input.text_changed.connect(_on_input_changed)
 
 	if auto_focus:
 		_input.grab_focus()
@@ -120,7 +121,7 @@ func _process_char(ch: String) -> void:
 	if not _started:
 		_started = true
 		_start_time = Time.get_ticks_msec() / 1000.0
-		emit_signal("typing_started")
+		typing_started.emit()
 
 	var text_to_type: String = target.text
 	if _index >= text_to_type.length():

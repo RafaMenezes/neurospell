@@ -22,4 +22,4 @@ func _on_gdllama_updated(new_text: String):
 	print(text_buffer.strip_edges())
 	if text_buffer.contains("<|eot_id|>"):
 		gdllama.stop_generate_text()
-		generate_text_finished.emit(text_buffer)
+		generate_text_finished.emit(text_buffer.strip_edges())
