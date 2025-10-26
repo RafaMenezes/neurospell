@@ -9,10 +9,10 @@ signal generate_text_finished(text: String)
 func _ready() -> void:
 	gdllama = GDLlama.new()
 	gdllama.model_path = "./models/Meta-Llama-3-8B-Instruct-Q5_K_M.gguf"
-	gdllama.n_predict = 50
+	gdllama.n_predict = 256
 	gdllama.interactive = false
 	gdllama.should_output_prompt = false
-	gdllama.generate_text_updated.connect(_on_gdllama_updated.bind(150,30))
+	gdllama.generate_text_updated.connect(_on_gdllama_updated.bind(250,50))
 	
 func run_generate_text(prompt: String) -> void:
 	gdllama.run_generate_text(prompt, "", "")
@@ -20,7 +20,7 @@ func run_generate_text(prompt: String) -> void:
 func _on_gdllama_updated(new_text: String, max_len, line_break) -> void:
 	text_buffer += new_text
 	print(text_buffer.strip_edges())
-	if text_buffer.contains("<|eot_id|>") or text_buffer.length() > 150:
+	if text_buffer.contains("<|eot_id|>") or text_buffer.length() > max_len:
 		gdllama.stop_generate_text()
 		text_buffer = _post_process_text(text_buffer, max_len, line_break)
 		generate_text_finished.emit(text_buffer.strip_edges())

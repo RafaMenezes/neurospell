@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ooqmwuq0c0by"]
+[gd_scene load_steps=5 format=3 uid="uid://ooqmwuq0c0by"]
 
 [ext_resource type="Theme" uid="uid://bmys3sottuoxl" path="res://main_theme.tres" id="1_5v58s"]
+[ext_resource type="Texture2D" uid="uid://bq0kmf400dddh" path="res://asset/tex/tile_0001.png" id="2_b2cts"]
 [ext_resource type="PackedScene" uid="uid://c62ifbrid345f" path="res://scenes/typable_text.tscn" id="2_e25md"]
 [ext_resource type="AudioStream" uid="uid://4mhs3mfq04g4" path="res://asset/sfx/glass-break.wav" id="3_uubuk"]
 
@@ -15,21 +16,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5v58s")
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.72155, 0.334165, 0.275705, 1)
+texture = ExtResource("2_b2cts")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="RecipeText" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RecipeText" type="Label" parent="NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = "Loading recipe..."
 
-[node name="TypableText" parent="RecipeText" instance=ExtResource("2_e25md")]
+[node name="TypableText" parent="NinePatchRect/MarginContainer/RecipeText" instance=ExtResource("2_e25md")]
 sound_error = ExtResource("3_uubuk")
