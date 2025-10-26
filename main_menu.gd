@@ -14,6 +14,7 @@ func _ready() -> void:
 	play_typable_text.typing_finished.connect(_on_play_typing_finished)
 	quit_typable_text.typing_finished.connect(_on_quit_typing_finished)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var ch := event.as_text()
@@ -38,18 +39,19 @@ func _unhandled_input(event: InputEvent) -> void:
 			active_typable_text._process_char(ch)
 
 
-	
 func _on_play_typing_finished(success: bool, time_taken: float, errors: int, accuracy: float) -> void:
 	if errors > 0:
 		_reset_menu_typable(play_typable_text, play.text)
 		return
 	get_tree().change_scene_to_packed(game_scene)
 
+
 func _on_quit_typing_finished(success: bool, time_taken: float, errors: int, accuracy: float) -> void:
 	if errors > 0:
 		_reset_menu_typable(quit_typable_text, quit.text)
 		return
 	get_tree().quit()
+
 
 func _reset_menu_typable(tt: TypableText, text: String) -> void:
 	tt._reset_state()

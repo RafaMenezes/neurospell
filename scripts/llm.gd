@@ -34,7 +34,7 @@ func _post_process_text(text: String, max_len: int, line_break: int) -> String:
 	for word in words:
 		var next_len := line.length() + word.length() + 1  # +1 for space
 		if total_chars + next_len > max_len:
-			# reached 100 characters total → truncate and end with ". . ."
+			# reached 100 characters total → truncate and end with "..."
 			if line.strip_edges() != "":
 				result += line.strip_edges() + " \n"
 			result = result.substr(0, max_len).strip_edges() + "..."
