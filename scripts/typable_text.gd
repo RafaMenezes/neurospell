@@ -1,6 +1,8 @@
 class_name TypableText
 extends Control
 
+signal text_ready(tt: TypableText)
+
 @export var max_errors_allowed: int = 999
 @export var auto_focus: bool = true
 @export var sound_correct: AudioStream
@@ -104,7 +106,7 @@ func _setup_text_labels(text: String) -> void:
 
 		current_line.add_child(lbl)
 		_char_labels.append(lbl)
-
+	text_ready.emit(self)
 
 
 func _on_input_changed(new_text: String) -> void:

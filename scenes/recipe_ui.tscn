@@ -46,6 +46,8 @@ theme_override_constants/margin_bottom = 8
 [node name="RecipeText" type="Label" parent="NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = "Loading recipe..."
 
 [node name="TypableText" parent="NinePatchRect/MarginContainer/RecipeText" instance=ExtResource("2_e25md")]
