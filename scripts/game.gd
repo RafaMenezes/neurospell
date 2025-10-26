@@ -40,7 +40,6 @@ func _on_typing_started(text: String) -> void:
 	
 func _on_time_up() -> void:
 	print("You didn't make it in time! The customer leaves very angry...")
-	round_timer.visible = false
 	round_timer.stop()
 
 func _on_typing_finished(success: bool, time_taken: float, errors: int, accuracy: float) -> void:

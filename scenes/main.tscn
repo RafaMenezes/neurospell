@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7wa0xb1wxgq2"]
+[gd_scene load_steps=11 format=3 uid="uid://c7wa0xb1wxgq2"]
 
 [ext_resource type="Script" uid="uid://b7qdbogggx28k" path="res://scripts/game.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ooqmwuq0c0by" path="res://scenes/recipe_ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://1v8nfmdt4gfa" path="res://scenes/LLM.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://bd5flrqjsu5rv" path="res://asset/tex/background_gameplay.png" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://1jtcau57us8w" path="res://scenes/round_timer.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bw7vi32pfwt66" path="res://asset/tex/wiz.png" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bs7imgvpqk5si" path="res://asset/tex/customer1.png" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://5wn25k5rv2j1" path="res://scripts/customer_behavior.gd" id="8_choun"]
+[ext_resource type="AudioStream" uid="uid://6sipn3fjmp3l" path="res://asset/music/medieval_tavern.wav" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://dk4cg6xp1fg3e" path="res://asset/music/tavern_ambience.wav" id="9_85g3d"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("round_timer")]
 layout_mode = 3
@@ -32,4 +37,29 @@ offset_right = -546.0
 offset_bottom = -411.0
 
 [node name="RoundTimer" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(1155, 25)
+position = Vector2(1155, 120)
+radius = 64.0
+inner_radius = 48.0
+
+[node name="Wiz" type="Sprite2D" parent="."]
+position = Vector2(150, 600)
+scale = Vector2(0.5, 0.429)
+texture = ExtResource("6_tefeu")
+
+[node name="Customer" type="Sprite2D" parent="."]
+position = Vector2(709, 544)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_o6xl0")
+script = ExtResource("8_choun")
+
+[node name="TavernMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tipki")
+volume_db = -15.0
+autoplay = true
+mix_target = 1
+
+[node name="TavernAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_85g3d")
+volume_db = -15.0
+autoplay = true
+mix_target = 1
